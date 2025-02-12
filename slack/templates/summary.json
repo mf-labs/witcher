@@ -1,0 +1,54 @@
+[
+    {
+        "type": "header",
+        "text": {
+            "type": "plain_text",
+            "text": ":coffee: witcher daily summary "
+        }
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "*GHAS*: ${{ghas_total}} repositories\n${{ghas_repos}}\n"
+        }
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "*Secret Scanning*: ${{secret_total}} repositories\n${{secret_repos}}\n"
+        }
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "*Dependabot*: ${{dp_total}} repositories\n${{dp_repos}}\n"
+        }
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "*Dependabot Paused*: ${{paused_total}} repositories\n${{paused_repos}}\n"
+        }
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "*Code Scanning*: ${{code_total}} repositories\n${{code_repos}}\n"
+        }
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "*Iac Scanning*: ${{iac_total}} repositories\n${{iac_repos}}\n"
+        }
+    }
+]

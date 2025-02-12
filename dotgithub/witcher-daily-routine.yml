@@ -1,0 +1,48 @@
+name: "witcher - Daily Routine"
+
+on:
+  schedule:
+    - cron: '30 7 * * 1,2,3,4,5' # Runs every 9:30 CET expect for Sunday / Saturday
+    
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+
+jobs:
+  daily-routine:
+    name: "App Sec Daily Routine"
+    if: ${{ github.event.schedule == '30 7 * * 1,2,3,4,5' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout witcher"
+        uses: actions/checkout@v4
+        with:
+          repository: mf-labs/witcher
+          token: ${{ secrets.SAST_TOKEN }}
+          path: './witcher'
+      
+      - name: "Setup NodeJS"
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/Hydrogen
+
+      - name: "Installing NPM packages"
+        run: cd witcher && npm i
+
+      - name: "witcher daily routine"
+        run: cd witcher && node witcher.js --daily-summary -m ALL -a status --slack --jira
+        env:
+          GITHUB_TOKEN: ${{ secrets.SAST_TOKEN }}
+          GITHUB_USER: ${{ github.actor }}
+          ORG: ${{ secrets.ORG }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
+          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+          SERVERLESS_APP_URL: ${{ secrets.SERVERLESS_APP_URL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_URL: ${{ secrets.JIRA_URL }}
+          JIRA_PROJECT: ${{ secrets.JIRA_PROJECT }}
+          JIRA_ISSUE_TYPE: ${{ secrets.JIRA_ISSUE_TYPE }}
+

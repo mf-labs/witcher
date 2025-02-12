@@ -1,0 +1,19 @@
+[
+	{
+		"type": "header",
+		"text": {
+			"type": "plain_text",
+			"text": ":alert: New Vulnerability Alert "
+		}
+	},
+	{
+		"type": "divider"
+	},
+	{
+		"type": "section",
+		"text": {
+			"type": "mrkdwn",
+			"text": "*Repository*: ${repo_name} \n*Severity*: ${security_severity_level} \n*Description*: ${description} \n*Class Path*: ${class_path} \n*GitHub Alert*: ${html_url} \n*Jira Ticket*: ${jira_url}"
+		}
+	}
+]

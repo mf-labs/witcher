@@ -1,0 +1,15 @@
+name: "IaC"
+
+on:
+  # schedule:
+  #   - cron: '30 9 * * 1'
+  
+  pull_request:
+    branches:
+      - master   
+
+jobs:
+  run-codeql:
+    name: CodeQL
+    uses: "<repository-hosting-actions>".github/workflows/iac.yml@master
+    secrets: inherit
