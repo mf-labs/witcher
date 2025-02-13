@@ -1,2 +1,0 @@
-offsec-sast-repo
-offsec-sast-testing

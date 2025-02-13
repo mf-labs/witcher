@@ -3,7 +3,7 @@
 Implement and monitor Appsec control at scale.
 
 ### Requirements
-- NodeJS 18
+- NodeJS 20.13
 
 ### Tested on
 - Mac
@@ -15,6 +15,16 @@ Implement and monitor Appsec control at scale.
 $ git clone git@github.com:mf-labs/witcher.git
 $ cd witcher
 $ npm i
+```
+
+### Build a Docker image
+```bash
+$ git clone git@github.com:mf-labs/witcher.git
+$ cd witcher
+$ docker build -t witcher .
+
+# Running docker image
+$ docker run -e GITHUB_TOKEN=$GITHUB_TOKEN -e ORG=$ORG witcher -a status -m ghas -r offsec-sast-testing
 ```
 
 
@@ -83,7 +93,7 @@ Set the following environment variable first
 Update the `github/data/exclusion.json` file with list of repositories excluded from Core Repositories / GHAS.
 
 
-#### Command cheatsheet
+### Command cheatsheet
 ```bash
 # List repositories where GHAS is disabled
 $ node witcher.js -m ghas -a status --repo All
@@ -109,7 +119,7 @@ $ node witcher.js --mass-action -a enable -m ghas --repo-file mass_action.txt --
 #### More Commands
 [More Command / Cheatsheet ](./misc/commands.sh)
 
-#### Daily Routien
+### Daily Routien
 ```bash
 # Run Daily Summary
 $ node witcher.js --daily-summary -m ALL -a status --slack --jira
@@ -133,3 +143,20 @@ $ node witcher.js --daily-summary -m ALL -a status --slack --jira
 - All archived repositories are excluded from witcher
 - All deprecated repositories are excluded from witcher
 ```
+
+### Roadmap
+- Custom Security Controls Monitoring: Add support for monitoring custom controls beyond CodeQL, IaC, and Dependabot.
+- Customizable Daily Summary: Allow users to add additional control statuses to daily reports.
+- CLI & JSON Output Support: Enable full output options via CLI arguments for both CLI and JSON formats.
+
+### License
+
+This project is licensed under the [Apache 2.0 License](./LICENSE)
+
+Copyright (c) 2025 Moonfare.  
+
+You are free to use, modify, and distribute the project, provided you include appropriate attributions to Moonfare in your use.
+
+### Contribution
+
+If you would like to contribute to the project, please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
