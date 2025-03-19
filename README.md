@@ -119,20 +119,20 @@ $ node witcher.js --mass-action -a enable -m ghas --repo-file mass_action.txt --
 #### More Commands
 [More Command / Cheatsheet ](./misc/commands.sh)
 
-### Daily Routien
+### Daily Routine
 ```bash
 # Run Daily Summary
 $ node witcher.js --daily-summary -m ALL -a status --slack --jira
 
-# Daily Summary inlcludes the checking of
-# 1. GHAS status on all repos
-# 2. Secret Scanning status on all repos
+# Daily Summary includes the checking of
+# 1. GHAS status on all repositories
+# 2. Secret Scanning status on all repositories
 # 3. Check for Depenabot status
 # 4. Check for paused Dependabot
-# 5. Code Scanning status on applicable repos
-# 6. IaC Scanning status on applicable repos
+# 5. Code Scanning status on applicable repositories
+# 6. IaC Scanning status on applicable repositories
 # 7. Check alerts for any new vulnerability
-# 8. Logged daily summary on SIEM and post on slack
+# 8. Logged daily summary on SIEM and posted on Slack
 ```
 
 
